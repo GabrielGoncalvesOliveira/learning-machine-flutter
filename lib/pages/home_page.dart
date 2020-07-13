@@ -5,6 +5,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:learning_machine/helpers/camera_helper.dart';
 import 'package:learning_machine/helpers/tflite_helper.dart';
 import 'package:learning_machine/models/tflite_result.dart';
+import 'package:dynamic_theme/dynamic_theme.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -33,6 +34,18 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text('Teachable Machine'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.lightbulb_outline),
+            onPressed: (){
+              DynamicTheme.of(context).setThemeData(new ThemeData(
+                primaryColor: Theme.of(context).primaryColor == Colors.deepPurple? Colors.yellow[900]: Colors.deepPurple,
+                accentColor: Theme.of(context).accentColor == Colors.deepPurple? Colors.yellow[900]: Colors.deepPurple,
+                brightness: Theme.of(context).brightness == Brightness.dark? Brightness.light: Brightness.dark
+              ));
+            },
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.photo_camera),
@@ -60,7 +73,7 @@ class _HomePageState extends State<HomePage> {
           padding: EdgeInsets.all(8.0),
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.white,
+              color: Colors.deepPurple,//Colors.deepPurple,
               width: 1,
             ),
             borderRadius: BorderRadius.circular(12),
@@ -99,7 +112,7 @@ class _HomePageState extends State<HomePage> {
         height: 150.0,
         decoration: BoxDecoration(
           border: Border.all(
-            color: Colors.white,
+            color: Colors.deepPurple,
             width: 1,
           ),
           borderRadius: BorderRadius.circular(12),
